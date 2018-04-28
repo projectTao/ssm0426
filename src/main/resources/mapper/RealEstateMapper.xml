@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bdqn.mapper.RealEstateMapper" >
+  <resultMap id="BaseResultMap" type="com.bdqn.model.RealEstate" >
+    <id property="id" column="id"/>
+    <result property="projectname" column="projectname"/>
+    <result property="address" column="address"/>
+    <result property="hoursetype" column="housetype"/>
+    <result property="buildtime" column="buildtime"/>
+    <result property="area" column="area"/>
+    <result property="users.cardId" column="cardid"/>
+    <result property="users.name" column="name"/>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, cardid, projectname, address, hoursetype, area, buildtime
+  </sql>
+  <select id="listAll" resultMap="BaseResultMap">
+    SELECT t1.id,t1.projectname,t1.address,t1.hoursetype,t1.area,t1.buildtime
+           ,t2.cardid,t2.name
+    FROM real_estate t1
+    LEFT JOIN users t2 ON t1.cardid = t2.cardid
+  </select>
+
+  <select id="listWithName" resultMap="BaseResultMap">
+    SELECT t1.id,t1.projectname,t1.address,t1.hoursetype,t1.area,t1.buildtime
+    ,t2.cardid,t2.name
+    FROM real_estate t1
+    LEFT JOIN users t2 ON t1.cardid = t2.cardid
+    <where>
+      <if test="name != null and name != ''">
+        and t2.name = #{name}
+      </if>
+    </where>
+  </select>
+  <select id="listWithCardId" resultMap="BaseResultMap">
+    SELECT t1.id,t1.projectname,t1.address,t1.hoursetype,t1.area,t1.buildtime
+    ,t2.cardid,t2.name
+    FROM real_estate t1
+    LEFT JOIN users t2 ON t1.cardid = t2.cardid
+    <where>
+      <if test="cardId != null">
+       AND t2.cardid = #{cardId}
+      </if>
+    </where>
+  </select>
+  <!--<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from real_estate
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from real_estate
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.bdqn.model.RealEstate" >
+    insert into real_estate (id, cardid, projectname, 
+      address, hoursetype, area, 
+      buildtime)
+    values (#{id,jdbcType=BIGINT}, #{cardid,jdbcType=VARCHAR}, #{projectname,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{hoursetype,jdbcType=VARCHAR}, #{area,jdbcType=INTEGER}, 
+      #{buildtime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bdqn.model.RealEstate" >
+    insert into real_estate
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="cardid != null" >
+        cardid,
+      </if>
+      <if test="projectname != null" >
+        projectname,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="hoursetype != null" >
+        hoursetype,
+      </if>
+      <if test="area != null" >
+        area,
+      </if>
+      <if test="buildtime != null" >
+        buildtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="cardid != null" >
+        #{cardid,jdbcType=VARCHAR},
+      </if>
+      <if test="projectname != null" >
+        #{projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="hoursetype != null" >
+        #{hoursetype,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=INTEGER},
+      </if>
+      <if test="buildtime != null" >
+        #{buildtime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bdqn.model.RealEstate" >
+    update real_estate
+    <set >
+      <if test="cardid != null" >
+        cardid = #{cardid,jdbcType=VARCHAR},
+      </if>
+      <if test="projectname != null" >
+        projectname = #{projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="hoursetype != null" >
+        hoursetype = #{hoursetype,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        area = #{area,jdbcType=INTEGER},
+      </if>
+      <if test="buildtime != null" >
+        buildtime = #{buildtime,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bdqn.model.RealEstate" >
+    update real_estate
+    set cardid = #{cardid,jdbcType=VARCHAR},
+      projectname = #{projectname,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      hoursetype = #{hoursetype,jdbcType=VARCHAR},
+      area = #{area,jdbcType=INTEGER},
+      buildtime = #{buildtime,jdbcType=DATE}
+    where id = #{id,jdbcType=BIGINT}
+  </update>-->
+</mapper>

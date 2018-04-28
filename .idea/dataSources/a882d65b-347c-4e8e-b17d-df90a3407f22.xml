@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="realestatel@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.3">
+    <root id="1"/>
+    <schema id="2" parent="1" name="realestatel">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="easybuy"/>
+    <schema id="4" parent="1" name="enginedb"/>
+    <schema id="5" parent="1" name="epet"/>
+    <schema id="6" parent="1" name="futianlibrary"/>
+    <schema id="7" parent="1" name="information_schema"/>
+    <schema id="8" parent="1" name="items"/>
+    <schema id="9" parent="1" name="jdbc01"/>
+    <schema id="10" parent="1" name="library"/>
+    <schema id="11" parent="1" name="mybatis"/>
+    <schema id="12" parent="1" name="mybatis001"/>
+    <schema id="13" parent="1" name="mybatis002"/>
+    <schema id="14" parent="1" name="myschool"/>
+    <schema id="15" parent="1" name="mysql"/>
+    <schema id="16" parent="1" name="mysqlweb"/>
+    <schema id="17" parent="1" name="mysql_01"/>
+    <schema id="18" parent="1" name="mysql_02"/>
+    <schema id="19" parent="1" name="performance_schema"/>
+    <schema id="20" parent="1" name="ssm001"/>
+    <schema id="21" parent="1" name="supershop"/>
+    <schema id="22" parent="1" name="supershop2"/>
+    <schema id="23" parent="1" name="test"/>
+    <schema id="24" parent="1" name="testmysql"/>
+    <schema id="25" parent="1" name="upload"/>
+    <table id="26" parent="2" name="real_estate"/>
+    <table id="27" parent="2" name="users"/>
+    <column id="28" parent="26" name="id">
+      <Position>1</Position>
+      <DataType>bigint(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="29" parent="26" name="cardid">
+      <Position>2</Position>
+      <DataType>varchar(18)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="30" parent="26" name="projectname">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="31" parent="26" name="address">
+      <Position>4</Position>
+      <DataType>varchar(200)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="32" parent="26" name="hoursetype">
+      <Position>5</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="33" parent="26" name="area">
+      <Position>6</Position>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="34" parent="26" name="buildtime">
+      <Position>7</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="35" parent="26" name="cardid">
+      <ColNames>cardid</ColNames>
+    </index>
+    <key id="36" parent="26" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="37" parent="26" name="real_estate_ibfk_1">
+      <ColNames>cardid</ColNames>
+      <RefSchemaName>realestatel</RefSchemaName>
+      <RefTableName>users</RefTableName>
+      <RefColNames>cardid</RefColNames>
+    </foreign-key>
+    <column id="38" parent="27" name="cardid">
+      <Position>1</Position>
+      <Comment>使用身份证号作为id</Comment>
+      <DataType>varchar(18)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="39" parent="27" name="name">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="40" parent="27" name="gender">
+      <Position>3</Position>
+      <Comment>根据身份证号最后一位数判断，单数时该字段填1 （ 表示女），双数时该字段填0(表示男)</Comment>
+      <DataType>int(1)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="41" parent="27" name="createtime">
+      <Position>4</Position>
+      <Comment>取服务器端系统当前时间</Comment>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="42" parent="27" name="password">
+      <Position>5</Position>
+      <Comment>长度6 位（含）以上</Comment>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="43" parent="27" name="status">
+      <Position>6</Position>
+      <Comment>1 为正常，0 为冻结，默认为1</Comment>
+      <DataType>int(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;1&apos;</DefaultExpression>
+    </column>
+    <key id="44" parent="27" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>cardid</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
