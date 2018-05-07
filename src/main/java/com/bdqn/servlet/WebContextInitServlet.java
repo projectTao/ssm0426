@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 public class WebContextInitServlet  extends HttpServlet{
     @Override
     public void init() throws ServletException {
+
         getServletContext().setAttribute("ctx",getServletContext().getContextPath());
     }
 }
