@@ -16,7 +16,7 @@
     </div>
     <div class="content">
         <div class="content_left">
-            <a href="${cxt}/estate/index" class="left content_left_b">房产信息查询</a><br>
+            <a href="${ctx}/estate/index" class="left content_left_b">房产信息查询</a><br>
         </div>
         <div class="content_right">
             <c:if test="${empty page.list}">
@@ -60,7 +60,7 @@
                         <td colspan="7" style="padding-top: 17px">
                             <a href="javascript:void(0)" id="homePage">首 页</a>|
                             <a href="javascript:void(0)" id="prevPage" >《 上一页</a>|
-                            <a href="javascript:void(0)" id="nextPage">下一个页 》</a>|
+                            <a href="javascript:void(0)" id="nextPage">下一页 》</a>|
                             <a href="javascript:void(0)" id="lastPage">尾 页</a>
                             到 第 <input name="inputPageNum" style="width: 25px"> 页&nbsp;&nbsp;<button id="skipPageBtn"> 确 定 </button>
                             第&nbsp;${page.pageNum }&nbsp;页 /共&nbsp;${page.pages }&nbsp;页 (${page.total }&nbsp;条)
